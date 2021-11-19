@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <template class="ContentMessagePhoto" parent="GtkWidget">
+    <property name="layout-manager">
+      <object class="GtkBoxLayout">
+        <property name="orientation">vertical</property>
+      </object>
+    </property>
+    <style>
+      <class name="message-bubble"/>
+      <class name="message-photo"/>
+    </style>
+    <child>
+      <object class="GtkFrame" id="frame">
+        <child>
+          <object class="GtkPicture" id="picture">
+            <property name="keep-aspect-ratio">False</property>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="GtkLabel" id="caption_label">
+        <property name="selectable">True</property>
+        <property name="use-markup">True</property>
+        <property name="wrap">True</property>
+        <property name="wrap-mode">word-char</property>
+        <property name="xalign">0</property>
+      </object>
+    </child>
+  </template>
+</interface>

@@ -1,6 +1,8 @@
+mod photo;
 mod sticker;
 mod text;
 
+use self::photo::MessagePhoto;
 use self::sticker::MessageSticker;
 use self::text::MessageText;
 
@@ -114,6 +116,20 @@ impl MessageRow {
 
         // Show content widget
         match message.content().0 {
+            MessageContent::MessagePhoto(_) => {
+                let content = if let Some(Ok(content)) = self_
+                    .content_bin
+                    .child()
+                    .map(|w| w.downcast::<MessagePhoto>())
+                {
+                    content
+                } else {
+                    let content = MessagePhoto::new();
+                    self_.content_bin.set_child(Some(&content));
+                    content
+                };
+                content.set_message(message);
+            }
             // TODO: Support animated stickers
             MessageContent::MessageSticker(data) if !data.sticker.is_animated => {
                 let content = if let Some(Ok(content)) = self_

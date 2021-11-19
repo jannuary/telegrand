@@ -71,6 +71,24 @@
   color: @accent_fg_color;
 }
 
+.chat-history row .message-photo {
+  padding: 2px;
+  font-size: 0.95em;
+}
+
+.chat-history row .message-photo frame {
+  border: 0;
+  border-radius: 10px;
+}
+
+.chat-history row .message-photo.caption frame {
+  border-radius: 10px 10px 4px 4px;
+}
+
+.chat-history row .message-photo label {
+  margin: 6px 10px 4px;
+}
+
 .chat-history row .event-row {
   font-size: 0.8em;
   padding: 3px;
